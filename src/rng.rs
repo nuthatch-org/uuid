@@ -97,7 +97,7 @@ mod imp {
     use super::*;
 
     #[cfg(all(
-        not(feature = "js"),
+        not(feature = "__js"),
         not(feature = "rng-getrandom"),
         not(feature = "rng-rand")
     ))]
@@ -164,14 +164,14 @@ mod imp {
 
     // Using WebCrypto via `wasm-bindgen`
     #[cfg(all(
-        feature = "js",
+        feature = "__js",
         not(feature = "rng-rand"),
         not(feature = "rng-getrandom")
     ))]
     pub(super) struct RngImp;
 
     #[cfg(all(
-        feature = "js",
+        feature = "__js",
         not(feature = "rng-rand"),
         not(feature = "rng-getrandom")
     ))]
@@ -207,7 +207,7 @@ mod imp {
         }
     }
 
-    #[cfg(feature = "js")]
+    #[cfg(feature = "__js")]
     mod webcrypto {
         /*
         This module preserves the stabilized behavior of `uuid` that requires the

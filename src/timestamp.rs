@@ -348,7 +348,7 @@ pub(crate) const fn decode_unix_timestamp_millis(uuid: &Uuid) -> u64 {
 
 #[cfg(all(
     feature = "std",
-    feature = "js",
+    feature = "__js",
     all(target_arch = "wasm32", any(target_os = "unknown", target_os = "none"))
 ))]
 fn now() -> (u64, u32) {
@@ -373,7 +373,7 @@ fn now() -> (u64, u32) {
     feature = "std",
     not(miri),
     any(
-        not(feature = "js"),
+        not(feature = "__js"),
         not(all(target_arch = "wasm32", any(target_os = "unknown", target_os = "none")))
     )
 ))]
